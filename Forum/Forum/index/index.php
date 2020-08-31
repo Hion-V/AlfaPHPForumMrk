@@ -19,32 +19,29 @@ function isUserLoggedIn(){
 		return false;
 	}
 }
- ?>
+?>
+
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Forum</title>
-</head>
-<body>
-<nav>
-	<?php 
-	if(isUserLoggedIn()){
+	<head>
+		<title>Forum</title>
+	</head>
 
-		echo('Logged in as: ');
-		echo($_SESSION['username']);
-		echo('<a href="index.php?p=newthread"><br>New Thread</a>');
-		echo('<a href="index.php?p=logout"><br>Logout</a>');
-		echo('<a href="index.php?p=showthreads"><br>Show Threads</a>');
-		echo('<br>');
-	}
-	else{
-		echo('<a href="index.php?p=login"><br>Login</a>');
-		echo('<a href="index.php?p=reg"><br>Registreren</a>');
-	}
-	?>
 
-</nav>
-</body>
+<?php 
+if(isUserLoggedIn()){
+	include_once('./content/header_loggedin.php');
+}
+else{
+	include_once('./content/header_loggedout.php');
+}
+?>
+
+
+	<body>
+		<main>
+
+
 <?php
 if ($pag_gekozen=="reg") {
 	
@@ -67,4 +64,8 @@ else if($pag_gekozen=="showthreads"){
 	include("../code/showthreads.php");
 }
 ?>
+
+
+		</main>
+	</body>
 </html>
