@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 31, 2020 at 11:54 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.7
+-- Generation Time: Aug 31, 2020 at 02:01 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,25 +25,60 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `boards`
+--
+
+CREATE TABLE `boards` (
+  `ID` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `boards`
+--
+
+INSERT INTO `boards` (`ID`, `title`, `description`) VALUES
+(1, 'General', 'General Discussions'),
+(2, 'Programming', 'Discussions related to programming');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `replies`
+--
+
+CREATE TABLE `replies` (
+  `ID` int(11) NOT NULL,
+  `thread_ID` int(11) NOT NULL,
+  `user_ID` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `content` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `threads`
 --
 
 CREATE TABLE `threads` (
-  `topic_id` int(11) NOT NULL,
+  `ID` int(11) NOT NULL,
+  `board_ID` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `title` varchar(256) NOT NULL,
   `text` varchar(255) NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `threads`
 --
 
-INSERT INTO `threads` (`topic_id`, `user_id`, `title`, `text`, `date_created`) VALUES
-(15, 1, '', '', '2020-08-15 01:23:57'),
-(16, 1, 'this is a chat', 'and this is the text', '2020-08-15 01:24:04'),
-(17, 4, 'testforid', 'testforid', '2020-08-15 01:31:32');
+INSERT INTO `threads` (`ID`, `board_ID`, `user_id`, `title`, `text`, `date_created`) VALUES
+(15, 2, 1, 'I need help programming a forum', 'Title is pretty self-explanatory', '2020-08-31 11:11:00'),
+(16, 1, 1, 'Henlo frens', 'I am of make potato butter', '2020-08-31 11:11:22'),
+(17, 1, 4, 'testforid', 'testforid', '2020-08-31 11:11:35');
 
 -- --------------------------------------------------------
 
@@ -65,17 +101,29 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `reg_ip`, `login_date`) VALUES
 (4, 'testforlogin', 'testforlogin', 'testforlogin', 0, '2020-08-16 03:37:58'),
-(6, 'test', 'test', 'test', 0, '2020-08-15 19:38:24');
+(6, 'test', 'test', 'test', 0, '2020-08-31 13:18:38');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `boards`
+--
+ALTER TABLE `boards`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `replies`
+--
+ALTER TABLE `replies`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `threads`
 --
 ALTER TABLE `threads`
-  ADD PRIMARY KEY (`topic_id`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `users`
@@ -88,10 +136,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `boards`
+--
+ALTER TABLE `boards`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `replies`
+--
+ALTER TABLE `replies`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `users`
