@@ -43,29 +43,27 @@ else{
 
 
 <?php
-if ($pag_gekozen=="reg") {
-	
-	include("../index/register.php");
-}
-
-else if($pag_gekozen=="newthread"){
-	include("../code/newthread.php");
-}
-
-else if($pag_gekozen=="login"){
-	include("../index/login.php");
-}
-
-else if($pag_gekozen=="logout"){
-	include("../code/session.logout.php");
-}
-
-else if($pag_gekozen=="showthreads"){
-	include("../code/showthreads.php");
+switch($pag_gekozen) {
+	case 'reg':
+		include("../index/register.php");
+		break;
+	case 'newthread':
+		include("../code/newthread.php");
+		break;
+	case 'login':
+		include("../index/login.php");
+		break;
+	case 'logout':
+		include("../code/session.logout.php");
+		break;
+	case 'showthreads':
+		include("../code/showthreads.php");
+		break;
+	case 'showboards':
+			include("./content/overview_boards.php");
+			break;
 }
 ?>
-
-
 		</main>
 	</body>
 </html>
