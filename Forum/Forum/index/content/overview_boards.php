@@ -10,12 +10,12 @@ foreach ($boardArray as $row){
     $boardrows .= <<< EOD
         <tr>
             <td>
-                <a href="?p=showthreads&board={$row[0]}">
-                    {$row[1]}
+                <a href="?p=showthreads&board={$row['ID']}">
+                    {$row['title']}
                 </a>
             </td>
             <td>
-                {$row[2]}
+                {$row['description']}
             </td>
         </tr>
     EOD;

@@ -57,11 +57,11 @@ switch($pag_gekozen) {
 		include("../code/session.logout.php");
 		break;
 	case 'showthreads':
-		include("../code/showthreads.php");
+		include("./content/overview_threads.php");
 		break;
 	case 'showboards':
-			include("./content/overview_boards.php");
-			break;
+		include("./content/overview_boards.php");
+		break;
 }
 ?>
 		</main>

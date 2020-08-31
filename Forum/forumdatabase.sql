@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 31, 2020 at 02:01 PM
+-- Generation Time: Aug 31, 2020 at 02:48 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -76,8 +76,8 @@ CREATE TABLE `threads` (
 --
 
 INSERT INTO `threads` (`ID`, `board_ID`, `user_id`, `title`, `text`, `date_created`) VALUES
-(15, 2, 1, 'I need help programming a forum', 'Title is pretty self-explanatory', '2020-08-31 11:11:00'),
-(16, 1, 1, 'Henlo frens', 'I am of make potato butter', '2020-08-31 11:11:22'),
+(15, 2, 6, 'I need help programming a forum', 'Title is pretty self-explanatory', '2020-08-31 12:34:11'),
+(16, 1, 6, 'Henlo frens', 'I am of make potato butter', '2020-08-31 12:34:14'),
 (17, 1, 4, 'testforid', 'testforid', '2020-08-31 11:11:35');
 
 -- --------------------------------------------------------
