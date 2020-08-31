@@ -19,8 +19,6 @@ function isUserLoggedIn(){
 		return false;
 	}
 }
-
-//yeet
  ?>
 <!DOCTYPE html>
 <html>
